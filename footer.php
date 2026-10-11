@@ -14,6 +14,7 @@
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Services</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/color-samples/' ) ); ?>">Color Samples</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>">Gallery</a></li>
 					<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
 				</ul>

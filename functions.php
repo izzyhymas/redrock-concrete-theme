@@ -10,6 +10,17 @@ function redrock_setup() {
 }
 add_action( 'after_setup_theme', 'redrock_setup' );
 
+function redrock_block_styles() {
+	register_block_style(
+		'core/gallery',
+		array(
+			'name'  => 'swatches',
+			'label' => 'Swatches',
+		)
+	);
+}
+add_action( 'init', 'redrock_block_styles' );
+
 function redrock_scripts() {
 	wp_enqueue_style(
 		'redrock-fonts',
