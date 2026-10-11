@@ -851,11 +851,23 @@ p {
 }
 
 .footer-bottom {
-  margin: var(--space-lg) 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid rgba(245, 242, 236, 0.2);
   font-size: 0.875rem;
   color: var(--gray);
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-social {
+  line-height: 0;
 }
 
 @media (max-width: 64rem) {
