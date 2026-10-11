@@ -41,3 +41,18 @@ function redrock_scripts() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'redrock_scripts' );
+
+function redrock_service_pages() {
+	$services_page = get_page_by_path( 'services' );
+
+	if ( ! $services_page ) {
+		return array();
+	}
+
+	return get_pages(
+		array(
+			'parent'      => $services_page->ID,
+			'sort_column' => 'menu_order,post_title',
+		)
+	);
+}

@@ -5,7 +5,7 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/logo-footer.png' ); ?>" alt="Red Rock Concrete Coatings" width="720" height="378" loading="lazy">
 				</a>
-				<p>Polyurea concrete coatings for homes across St.&nbsp;George and Southern Utah.</p>
+				<p>Concrete coatings, polishing, and repair across St.&nbsp;George and Southern Utah.</p>
 			</div>
 
 			<nav aria-label="Footer">
@@ -22,9 +22,10 @@
 			<div>
 				<h2 class="eyebrow">Services</h2>
 				<ul>
-					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Garage Floors</a></li>
-					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Patios &amp; Pool Decks</a></li>
-					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">Driveways &amp; Walkways</a></li>
+					<?php foreach ( redrock_service_pages() as $service ) : ?>
+						<li><a href="<?php echo esc_url( get_permalink( $service ) ); ?>"><?php echo esc_html( get_the_title( $service ) ); ?></a></li>
+					<?php endforeach; ?>
+					<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">All Services</a></li>
 				</ul>
 			</div>
 

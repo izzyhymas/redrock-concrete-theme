@@ -1,6 +1,9 @@
 <?php
 get_header();
 the_post();
+
+$services_page = get_page_by_path( 'services' );
+$is_service    = $services_page && wp_get_post_parent_id() === $services_page->ID;
 ?>
 
 <main id="main">
@@ -18,10 +21,29 @@ the_post();
 	</section>
 
 	<section class="section">
-		<div class="container">
-			<div class="page-content">
-				<?php the_content(); ?>
-			</div>
+		<div class="container<?php echo $is_service ? ' service-layout' : ''; ?>">
+			<?php if ( get_the_content() ) : ?>
+				<div class="page-content">
+					<?php the_content(); ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( is_page( 'services' ) ) : ?>
+				<?php get_template_part( 'parts/service-cards', null, array( 'services' => redrock_service_pages() ) ); ?>
+			<?php endif; ?>
+
+			<?php if ( $is_service ) : ?>
+				<aside class="service-aside">
+					<h2 class="eyebrow">Other Services</h2>
+					<ul class="service-list">
+						<?php foreach ( redrock_service_pages() as $service ) : ?>
+							<?php if ( get_the_ID() !== $service->ID ) : ?>
+								<li><a href="<?php echo esc_url( get_permalink( $service ) ); ?>"><?php echo esc_html( get_the_title( $service ) ); ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</ul>
+				</aside>
+			<?php endif; ?>
 		</div>
 	</section>
 

@@ -589,6 +589,53 @@ p {
   margin-top: var(--space-md);
 }
 
+.page-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.page-content + .grid-3 {
+  margin-top: var(--space-lg);
+}
+
+.service-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  align-items: start;
+  gap: var(--space-lg);
+}
+
+.service-aside {
+  grid-column: 2;
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-md));
+}
+
+.service-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.service-list a {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.service-list a::after {
+  content: " →";
+  color: var(--red);
+}
+
+.service-list a:hover,
+.service-list a:focus-visible {
+  color: var(--red);
+}
+
 .page-content .wp-block-gallery.has-nested-images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -783,8 +830,14 @@ p {
   .grid-3,
   .split,
   .faq-layout,
-  .contact-layout {
+  .contact-layout,
+  .service-layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-aside {
+    grid-column: auto;
+    position: static;
   }
 
   .gallery,

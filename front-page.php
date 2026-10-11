@@ -9,6 +9,8 @@ if ( is_page() && has_post_thumbnail() ) {
 	$hero_image = get_the_post_thumbnail_url( null, 'full' );
 }
 
+$services = redrock_service_pages();
+
 $gallery_ids  = array();
 $gallery_page = get_page_by_path( 'gallery' );
 
@@ -36,8 +38,8 @@ if ( $gallery_page ) {
 			<h1 class="hero__title">Concrete Coatings Built <br>for Red Rock Country</h1>
 
 			<p class="hero__lead">
-				Garage floors, patios, and driveways finished in durable polyurea
-				coatings — UV stable, hot-tire resistant, and installed in a single day.
+				Garage floor coatings, polished and stained concrete, sealing, and
+				repairs, built to handle the Southern Utah sun.
 			</p>
 
 			<div class="actions">
@@ -47,37 +49,18 @@ if ( $gallery_page ) {
 		</div>
 	</section>
 
+	<?php if ( $services ) : ?>
 	<section class="section">
 		<div class="container">
 			<div class="section-header">
-				<p class="eyebrow">What We Coat</p>
-				<h2>Concrete coatings for every part of your home</h2>
+				<p class="eyebrow">What We Do</p>
+				<h2>Everything your concrete needs</h2>
 			</div>
 
-			<div class="grid-3">
-				<article class="card">
-					<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-					<h3>Garage Floors</h3>
-					<p>Hot tires, oil drips, and dropped tools are no match for a polyurea flake floor. It cleans up easily and looks sharp for years.</p>
-					<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="link-arrow">Learn more<span class="screen-reader-text"> about garage floors</span></a>
-				</article>
-
-				<article class="card">
-					<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-					<h3>Patios &amp; Pool Decks</h3>
-					<p>A slip-resistant, UV-stable finish that holds its color through Southern Utah summers and stands up to pool water.</p>
-					<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="link-arrow">Learn more<span class="screen-reader-text"> about patios and pool decks</span></a>
-				</article>
-
-				<article class="card">
-					<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-					<h3>Driveways &amp; Walkways</h3>
-					<p>Cover stains and worn concrete and give the entrance to your home a clean, finished look that lasts.</p>
-					<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="link-arrow">Learn more<span class="screen-reader-text"> about driveways and walkways</span></a>
-				</article>
-			</div>
+			<?php get_template_part( 'parts/service-cards', null, array( 'services' => $services ) ); ?>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<?php if ( $gallery_ids ) : ?>
 	<section class="section section--dark">
