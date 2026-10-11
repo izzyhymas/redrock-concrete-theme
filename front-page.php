@@ -8,6 +8,17 @@ $hero_image = $test_image;
 if ( is_page() && has_post_thumbnail() ) {
 	$hero_image = get_the_post_thumbnail_url( null, 'full' );
 }
+
+$gallery_ids  = array();
+$gallery_page = get_page_by_path( 'gallery' );
+
+if ( $gallery_page ) {
+	$gallery = get_post_gallery( $gallery_page, false );
+
+	if ( is_array( $gallery ) && ! empty( $gallery['ids'] ) ) {
+		$gallery_ids = array_slice( wp_parse_id_list( $gallery['ids'] ), 0, 6 );
+	}
+}
 ?>
 
 <main id="main">
@@ -68,6 +79,7 @@ if ( is_page() && has_post_thumbnail() ) {
 		</div>
 	</section>
 
+	<?php if ( $gallery_ids ) : ?>
 	<section class="section section--dark">
 		<div class="container">
 			<div class="section-header">
@@ -76,17 +88,15 @@ if ( is_page() && has_post_thumbnail() ) {
 			</div>
 
 			<div class="gallery">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
-				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
+				<?php foreach ( $gallery_ids as $image_id ) : ?>
+					<?php echo wp_get_attachment_image( $image_id, 'medium_large', false, array( 'sizes' => '(max-width: 48rem) 50vw, 380px' ) ); ?>
+				<?php endforeach; ?>
 			</div>
 
 			<a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="btn btn--primary">View the Gallery</a>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<section class="section">
 		<div class="container split">
