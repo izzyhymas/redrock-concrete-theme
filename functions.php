@@ -21,6 +21,35 @@ function redrock_block_styles() {
 }
 add_action( 'init', 'redrock_block_styles' );
 
+function redrock_customize_register( $wp_customize ) {
+	$wp_customize->add_section(
+		'redrock_homepage',
+		array(
+			'title' => 'Homepage',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'redrock_about_photo',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'redrock_about_photo',
+			array(
+				'label'     => 'About section photo',
+				'section'   => 'redrock_homepage',
+				'mime_type' => 'image',
+			)
+		)
+	);
+}
+add_action( 'customize_register', 'redrock_customize_register' );
+
 function redrock_scripts() {
 	wp_enqueue_style(
 		'redrock-fonts',

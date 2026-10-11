@@ -11,6 +11,8 @@ if ( is_page() && has_post_thumbnail() ) {
 
 $services = redrock_service_pages();
 
+$about_photo = get_theme_mod( 'redrock_about_photo' );
+
 $gallery_ids  = array();
 $gallery_page = get_page_by_path( 'gallery' );
 
@@ -83,7 +85,11 @@ if ( $gallery_page ) {
 
 	<section class="section">
 		<div class="container split">
-			<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
+			<?php if ( $about_photo ) : ?>
+				<?php echo wp_get_attachment_image( $about_photo, 'large', false, array( 'sizes' => '(max-width: 48rem) 100vw, 560px' ) ); ?>
+			<?php else : ?>
+				<img src="<?php echo esc_url( $test_image ); ?>" alt="" loading="lazy">
+			<?php endif; ?>
 
 			<div>
 				<p class="eyebrow">About Red Rock</p>
