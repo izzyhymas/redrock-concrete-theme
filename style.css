@@ -218,7 +218,7 @@ p {
 
 .site-title img {
   width: auto;
-  height: 3.25rem;
+  height: 4rem;
 }
 
 .site-header nav ul {
@@ -307,7 +307,7 @@ p {
 
 @media (max-width: 30rem) {
   .site-title img {
-    height: 2rem;
+    height: 3rem;
   }
 
   .header-phone {

@@ -14,7 +14,7 @@
 	<div class="container">
 
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-title">
-			<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/logo-header.png' ); ?>" alt="Red Rock Concrete Coatings" width="473" height="132">
+			<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/logo-header.png' ); ?>" alt="Red Rock Concrete Coatings" width="422" height="200">
 		</a>
 
 		<nav id="primary-nav" aria-label="Primary">
